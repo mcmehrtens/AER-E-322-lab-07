@@ -1,0 +1,180 @@
+% AER E 361 Mission Report Template
+% Spring 2023
+% Template created by Yiqi Liang and Professor Matthew Nelson
+
+% Document Configuration DO NOT CHANGE
+\documentclass[12 pt]{article}
+% --------------------LaTeX Packages---------------------------------
+% The following are packages that are used in this report.
+% DO NOT CHANGE ANY OF THE FOLLOWING OR YOUR REPORT WILL NOT COMPILE
+% -------------------------------------------------------------------
+
+\usepackage{hyperref}
+\usepackage{parskip}
+\usepackage{titlesec}
+\usepackage{titling}
+\usepackage{graphicx}
+\usepackage{graphviz}
+\usepackage[T1]{fontenc}
+\usepackage{titlesec, blindtext, color} %for LessIsMore style
+\usepackage{tcolorbox} %for references box
+\usepackage[hmargin=1in,vmargin=1in]{geometry} % use 1 inch margins
+\usepackage{float}
+\usepackage{tikz}
+\usepackage{svg} % Allows for SVG Vector graphics
+\usepackage{textcomp, gensymb} %for degree symbol
+\hypersetup{
+	colorlinks=true,
+	linkcolor=blue,
+	urlcolor=cyan,
+}
+\usepackage{biblatex}
+\addbibresource{lab-report-bib.bib}
+\usepackage{amsmath}
+\usepackage{listings}
+\usepackage{multicol}
+\usepackage{array}
+
+\usepackage{hologo} %KYR: for \BibTeX
+%\usepackage{algpseudocode}
+%\usepackage{algorithm}
+% This configures items for code listings in the document
+\usepackage{xcolor}
+
+\usepackage{fancyhdr} % Headers/Footers
+\usepackage{siunitx} % SI units
+\usepackage{csquotes} % Display Quote
+\usepackage{microtype} % Better line breaks
+
+\definecolor{commentsColor}{rgb}{0.497495, 0.497587, 0.497464}
+\definecolor{keywordsColor}{rgb}{0.000000, 0.000000, 0.635294}
+\definecolor{stringColor}{rgb}{0.558215, 0.000000, 0.135316}
+\definecolor{mygreen}{rgb}{0,0.6,0}
+\definecolor{mygray}{rgb}{0.5,0.5,0.5}
+\definecolor{mymauve}{rgb}{0.58,0,0.82}
+
+\lstdefinestyle{customc}{
+  belowcaptionskip=1\baselineskip,
+  breaklines=true,
+  frame=L,
+  xleftmargin=\parindent,
+  language=C,
+  showstringspaces=false,
+  basicstyle=\footnotesize\ttfamily,
+  keywordstyle=\bfseries\color{green!40!black},
+  commentstyle=\itshape\color{purple!40!black},
+  identifierstyle=\color{blue},
+  stringstyle=\color{orange},
+ }
+
+ \lstset{ %
+  backgroundcolor=\color{white},   % choose the background color; you must add \usepackage{color} or \usepackage{xcolor}
+  basicstyle=\footnotesize,        % the size of the fonts that are used for the code
+  breakatwhitespace=false,         % sets if automatic breaks should only happen at whitespace
+  breaklines=true,                 % sets automatic line breaking
+  captionpos=b,                    % sets the caption-position to bottom
+  commentstyle=\color{commentsColor}\textit,    % comment style
+  deletekeywords={...},            % if you want to delete keywords from the given language
+  escapeinside={\%*}{*)},          % if you want to add LaTeX within your code
+  extendedchars=true,              % lets you use non-ASCII characters; for 8-bits encodings only, does not work with UTF-8
+  frame=tb,	                   	   % adds a frame around the code
+  keepspaces=true,                 % keeps spaces in text, useful for keeping indentation of code (possibly needs columns=flexible)
+  keywordstyle=\color{keywordsColor}\bfseries,       % keyword style
+  language=Python,                 % the language of the code (can be overrided per snippet)
+  otherkeywords={*,...},           % if you want to add more keywords to the set
+  numbers=left,                    % where to put the line-numbers; possible values are (none, left, right)
+  numbersep=8pt,                   % how far the line-numbers are from the code
+  numberstyle=\tiny\color{commentsColor}, % the style that is used for the line-numbers
+  rulecolor=\color{black},         % if not set, the frame-color may be changed on line-breaks within not-black text (e.g. comments (green here))
+  showspaces=false,                % show spaces everywhere adding particular underscores; it overrides 'showstringspaces'
+  showstringspaces=false,          % underline spaces within strings only
+  showtabs=false,                  % show tabs within strings adding particular underscores
+  stepnumber=1,                    % the step between two line-numbers. If it's 1, each line will be numbered
+  stringstyle=\color{stringColor}, % string literal style
+  tabsize=2,	                   % sets default tabsize to 2 spaces
+  title=\lstname,                  % show the filename of files included with \lstinputlisting; also try caption instead of title
+  columns=fixed                    % Using fixed column width (for e.g. nice alignment)
+}
+
+\lstdefinestyle{customasm}{
+  belowcaptionskip=1\baselineskip,
+  frame=L,
+  xleftmargin=\parindent,
+  language=[x86masm]Assembler,
+  basicstyle=\footnotesize\ttfamily,
+  commentstyle=\itshape\color{purple!40!black},
+}
+
+\lstset{escapechar=@,style=customc}
+
+\titlelabel{\thetitle.\quad}
+
+% From here on out you can start editing your document
+\newcommand{\subtitle}[1]{%
+  \posttitle{%
+    \par\end{center}
+    \begin{center}\LARGE#1\end{center}
+    \vskip0.5em}%
+}
+
+\newcommand{\etal}{\textit{et al}., }
+\newcommand{\ie}{\textit{i}.\textit{e}., }
+\newcommand{\eg}{\textit{e}.\textit{g}., }
+
+% Define the headers and footers
+\setlength{\headheight}{70.63135pt}
+\geometry{head=70.63135pt, includehead=true, includefoot=true}
+\pagestyle{fancy}
+\fancyhead{}\fancyfoot{} % clears the headers/footers
+\fancyhead[L]{\textbf{AER E 322}}
+\fancyhead[C]{\textbf{Aerospace Structures Pre-Laboratory}\\
+			  \textbf{Lab 7 Column Buckling}\\
+			  Section 4 Group 2\\
+			  Matthew Mehrtens\\
+			  \today}
+\fancyhead[R]{\textbf{Spring 2023}}
+\fancyfoot[C]{\thepage}
+
+\begin{document}
+\section*{Question 1}
+\textit{Review Week \num{9} lecture and corresponding reference book materials (Peery is available online from ISU library).}
+
+% TODO
+
+\section*{Question 2}
+\textit{(\num{15} points) For the end condition of one free and one fixed (lecture note page \num{12}), why is the effective length twice as long as the actual length? Could you come up with a simple explanation? Hint: think of “mirror”...}
+
+% TODO
+
+\section*{Question 3}
+\textit{(\num{25} pts) Derive the formulas for critical load $P$ and slenderness ratio $\frac{L}{\rho}$ of a circular rod and a rectangular bar subjected to axial loading, in terms of $\pi$, length $L$, modulus of elasticity $E$ and specimen radius $R$ (for circular rod) or cross-sectional dimensions $B$ and/or $H$ (for rectangular bar).}
+
+% TODO
+
+\section*{Question 4}
+(\num{30} pts) Use the formulas from question three to calculate the $P$s and $\frac{L}{\rho}$s for metal specimens made of stainless 304 annealed cold finish steel (elastic modulus $E=\qty{29000}{ksi}$ and yield strength $\sigma^Y=\qty{35}{ksi}$) and 6061-T6 aluminum ($E=\qty{10000}{ksi}$ and $\sigma^Y=\qty{40}{ksi}$) with the sizes and end conditions given in Table \ref{tbl:question_4_data}. What equivalent lengths will you use for the pivot-pivot and pivot-fixed end conditions? For the \qtyproduct{0.25x1}{in.} aluminum specimen, which dimension do you choose to calculate the slenderness ratio? Hint: see the workout example on pages \numrange{14}{15} in lecture notes. You may want to write yourself a little computer program for these calculations. Tabulate your calculations on the $P$s and $\frac{L}{\rho}$s. Also list the effective lengths you used.
+
+\begin{table}[!htbp]
+\caption{Five column buckling test sets.}
+\begin{center}
+	\begin{tabular}{|c|c|c|c|c|}
+		\hline
+		Specimen ID&Material&Cross-Section [\unit{in.}]&Length [\unit{in.}]&End Condition\\
+		\hline
+		I&aluminum&$\frac{3}{8}$ dia.&\num{30}&both pivot (round)\\
+		\hline
+		II&aluminum&\numproduct{0.25x1}&\num{30}&both pivot (round)\\
+		\hline
+		III&steel&$\frac{1}{4}$ dia.&\num{30}&both pivot (round)\\
+		\hline
+		IV&steel&$\frac{1}{4}$ dia.&\num{24}&both pivot (round)\\
+		\hline
+		V&steel&$\frac{1}{4}$ dia.&\num{27.5} (\num{30} original)&one pivot, one fixed\\
+		\hline
+	\end{tabular}
+\end{center}
+\label{tbl:question_4_data}
+\end{table}
+
+% TODOs
+\end{document}
