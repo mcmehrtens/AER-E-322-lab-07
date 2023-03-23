@@ -159,7 +159,7 @@ For the circular rod, we know that the moment of inertia is
 Substituting $I$ into Equations \ref{eqn:p_cr} and \ref{eqn:slenderness_ratio}, we derive the following equations for $P_{cr}$ and $\frac{L}{\rho}$:
 \begin{align}
 	P_{cr}&=\frac{\pi^2E\frac{\pi}{64}(2R)^4}{L^2}=\frac{\pi^3ER^4}{4L^2}\label{eqn:P_cr_rod}\\
-	\frac{L}{\rho}&=L\sqrt{\frac{A}{\frac{\pi}{64}(2R)^4}}=\frac{2L}{R^2}\sqrt{\frac{A}{\pi}}\label{eqn:slenderness_ratio_rod}
+	\frac{L}{\rho}&=L\sqrt{\frac{\pi{}R^2}{\frac{\pi}{64}(2R)^4}}=\frac{2L}{R}\label{eqn:slenderness_ratio_rod}
 \end{align}
 For the beam, we know the moment of inertia is defined as
 \begin{align*}
@@ -168,7 +168,7 @@ For the beam, we know the moment of inertia is defined as
 Substituting $I$ into Equations \ref{eqn:p_cr} and \ref{eqn:slenderness_ratio}, we derive the following equations for $P_{cr}$ and $\frac{L}{\rho}$:
 \begin{align}
 	P_{cr}&=\frac{\pi^2E\frac{1}{12}BH^3}{L^2}=\frac{\pi^2EBH^3}{12L^2}\label{eqn:P_cr_beam}\\
-	\frac{L}{\rho}&=L\sqrt{\frac{A}{\frac{1}{12}BH^3}}=2L\sqrt{\frac{3A}{BH^3}}\label{eqn:slenderness_ratio_beam}
+	\frac{L}{\rho}&=L\sqrt{\frac{BH}{\frac{1}{12}BH^3}}=\frac{2L}{H}\sqrt{3}\label{eqn:slenderness_ratio_beam}
 \end{align}
 
 \section*{Question 4}
@@ -199,6 +199,8 @@ Substituting $I$ into Equations \ref{eqn:p_cr} and \ref{eqn:slenderness_ratio}, 
 I wrote a MATLAB script to solve these problems. Table \ref{tbl:data} shows the resultant $P_cr$ and $\frac{L}{\rho}$ values. The code output and code are shown below.
 
 For configuration \num{2}, we use $\qty{1}{''}$ to be the base and $\qty{0.25}{''}$ to be the height since this results in the smallest moment of inertia, \ie the least resistance to bending. For configurations \numrange{1}{4}, $L_{eff}=L$. For configurations \num{5}, based on the lecture notes, $L_{eff}=0.7L$.
+
+I believe there is a typo in the table given for this question. We are given the length of configuration \num{5} is \qty{27.5}{''}, but it says the original length was \qty{30}{''}. If the original length is \qty{30}{''}, then the effective length should be $0.7*\qty{30}{''}=\qty{21}{''}\ne\qty{27.5}{''}$. I will assume the effective length is $\qty{21}{''}$ for this problem.
 
 \begin{table}[!htbp]
 \caption{Five column buckling test sets.}
