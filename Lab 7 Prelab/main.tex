@@ -139,20 +139,40 @@
 \section*{Question 1}
 \textit{Review Week \num{9} lecture and corresponding reference book materials (Peery is available online from ISU library).}
 
-% TODO
-
 \section*{Question 2}
 \textit{(\num{15} points) For the end condition of one free and one fixed (lecture note page \num{12}), why is the effective length twice as long as the actual length? Could you come up with a simple explanation? Hint: think of “mirror”...}
 
-% TODO
+The effective length has to be measured from two points on the same vertical axis. The first point is at the free-end, distance $L$ above the ground, and if you imagine the beam is mirrored through the ground, the other point would be at a distance $L$ \textit{beneath} the ground. Therefore, the effective length of the beam is $L+L=2L$.
 
 \section*{Question 3}
 \textit{(\num{25} pts) Derive the formulas for critical load $P$ and slenderness ratio $\frac{L}{\rho}$ of a circular rod and a rectangular bar subjected to axial loading, in terms of $\pi$, length $L$, modulus of elasticity $E$ and specimen radius $R$ (for circular rod) or cross-sectional dimensions $B$ and/or $H$ (for rectangular bar).}
 
-% TODO
+We know that
+\begin{align}
+	P_{cr}&=\frac{\pi^2EI}{L^2}\label{eqn:p_cr}\\
+	\frac{L}{\rho}&=L\sqrt{\frac{A}{I}}\label{eqn:slenderness_ratio}
+\end{align}
+For the circular rod, we know that the moment of inertia is
+\begin{align*}
+	I&=\frac{\pi}{64}(2R)^4
+\end{align*}
+Substituting $I$ into Equations \ref{eqn:p_cr} and \ref{eqn:slenderness_ratio}, we derive the following equations for $P_{cr}$ and $\frac{L}{\rho}$:
+\begin{align}
+	P_{cr}&=\frac{\pi^2E\frac{\pi}{64}(2R)^4}{L^2}=\frac{\pi^3ER^4}{4L^2}\label{eqn:P_cr_rod}\\
+	\frac{L}{\rho}&=L\sqrt{\frac{A}{\frac{\pi}{64}(2R)^4}}=\frac{2L}{R^2}\sqrt{\frac{A}{\pi}}\label{eqn:slenderness_ratio_rod}
+\end{align}
+For the beam, we know the moment of inertia is defined as
+\begin{align*}
+	I&=\frac{1}{12}BH^3
+\end{align*}
+Substituting $I$ into Equations \ref{eqn:p_cr} and \ref{eqn:slenderness_ratio}, we derive the following equations for $P_{cr}$ and $\frac{L}{\rho}$:
+\begin{align}
+	P_{cr}&=\frac{\pi^2E\frac{1}{12}BH^3}{L^2}=\frac{\pi^2EBH^3}{12L^2}\label{eqn:P_cr_beam}\\
+	\frac{L}{\rho}&=L\sqrt{\frac{A}{\frac{1}{12}BH^3}}=2L\sqrt{\frac{3A}{BH^3}}\label{eqn:slenderness_ratio_beam}
+\end{align}
 
 \section*{Question 4}
-(\num{30} pts) Use the formulas from question three to calculate the $P$s and $\frac{L}{\rho}$s for metal specimens made of stainless 304 annealed cold finish steel (elastic modulus $E=\qty{29000}{ksi}$ and yield strength $\sigma^Y=\qty{35}{ksi}$) and 6061-T6 aluminum ($E=\qty{10000}{ksi}$ and $\sigma^Y=\qty{40}{ksi}$) with the sizes and end conditions given in Table \ref{tbl:question_4_data}. What equivalent lengths will you use for the pivot-pivot and pivot-fixed end conditions? For the \qtyproduct{0.25x1}{in.} aluminum specimen, which dimension do you choose to calculate the slenderness ratio? Hint: see the workout example on pages \numrange{14}{15} in lecture notes. You may want to write yourself a little computer program for these calculations. Tabulate your calculations on the $P$s and $\frac{L}{\rho}$s. Also list the effective lengths you used.
+\textit{(\num{30} pts) Use the formulas from question three to calculate the $P$s and $\frac{L}{\rho}$s for metal specimens made of stainless 304 annealed cold finish steel (elastic modulus $E=\qty{29000}{ksi}$ and yield strength $\sigma^Y=\qty{35}{ksi}$) and 6061-T6 aluminum ($E=\qty{10000}{ksi}$ and $\sigma^Y=\qty{40}{ksi}$) with the sizes and end conditions given in Table \ref{tbl:question_4_data}. What equivalent lengths will you use for the pivot-pivot and pivot-fixed end conditions? For the \qtyproduct{0.25x1}{in.} aluminum specimen, which dimension do you choose to calculate the slenderness ratio? Hint: see the workout example on pages \numrange{14}{15} in lecture notes. You may want to write yourself a little computer program for these calculations. Tabulate your calculations on the $P$s and $\frac{L}{\rho}$s. Also list the effective lengths you used.}
 
 \begin{table}[!htbp]
 \caption{Five column buckling test sets.}
@@ -176,5 +196,47 @@
 \label{tbl:question_4_data}
 \end{table}
 
-% TODOs
+I wrote a MATLAB script to solve these problems. Table \ref{tbl:data} shows the resultant $P_cr$ and $\frac{L}{\rho}$ values. The code output and code are shown below.
+
+For configuration \num{2}, we use $\qty{1}{''}$ to be the base and $\qty{0.25}{''}$ to be the height since this results in the smallest moment of inertia, \ie the least resistance to bending. For configurations \numrange{1}{4}, $L_{eff}=L$. For configurations \num{5}, based on the lecture notes, $L_{eff}=0.7L$.
+
+\begin{table}[!htbp]
+\caption{Five column buckling test sets.}
+\begin{center}
+	\begin{tabular}{|c|c|c|c|c|}
+		\hline
+		Configuration&$P_{cr}$ [\unit{lbf}]&$\frac{L}{\rho}$ []\\
+		\hline
+		1&106.5&320.0\\
+		\hline
+		2&142.8&415.7\\
+		\hline
+		3&60.98&480.0\\
+		\hline
+		4&95.28&384.0\\
+		\hline
+		5&124.4&336.0\\
+		\hline
+	\end{tabular}
+\end{center}
+\label{tbl:data}
+\end{table}
+
+\begin{verbatim}
+========== Configuration 1 ==========
+P_cr   =  106.452 [lbf]
+L/rho  =      320 []
+========== Configuration 2 ==========
+P_cr   =  142.789 [lbf]
+L/rho  =  415.692 []
+========== Configuration 3 ==========
+P_cr   =  60.9797 [lbf]
+L/rho  =      480 []
+========== Configuration 4 ==========
+P_cr   =  95.2808 [lbf]
+L/rho  =      384 []
+========== Configuration 5 ==========
+P_cr   =  124.448 [lbf]
+L/rho  =      336 []
+\end{verbatim}
 \end{document}
