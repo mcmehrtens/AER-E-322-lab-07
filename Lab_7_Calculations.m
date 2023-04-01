@@ -15,10 +15,10 @@ B               = 1;        % [in]
 H               = 0.25;     % [in]
 D               = 1 / 4;    % [in]
 R               = D / 2;    % [in]
-L_eff           = 0.7*27.5; % [in]
+L_eff           = 29.5;     % [in]
 
 % Set constants
-steel = true; % Set this to true for steel; false for aluminum
+steel = false; % Set this to true for steel; false for aluminum
 if steel
     E = E_steel;
     sigma_Y = sigma_Y_steel;
@@ -28,7 +28,7 @@ else
 end
 
 % Calculate Beam
-calc_beam = false; % Set this to true for a beam; false for a rod
+calc_beam = true; % Set this to true for a beam; false for a rod
 if calc_beam
     A = B * H; % [in^2]
     P_cr = pi^2 * E * B * H^3 / (12 * L_eff^2); % [lbf]
