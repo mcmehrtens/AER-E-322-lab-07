@@ -15,7 +15,7 @@ B               = 1;        % [in]
 H               = 0.25;     % [in]
 D               = 1 / 4;    % [in]
 R               = D / 2;    % [in]
-L_eff           = 21;       % [in]
+L_eff           = 0.7*27.5; % [in]
 
 % Set constants
 steel = true; % Set this to true for steel; false for aluminum
