@@ -313,7 +313,25 @@ Data collected from the experiment is tabulated in Table \ref{tbl:data}.
 \end{table}
 
 \section{Analysis} \label{analysis}
-% TODO
+In the test for configuration two, we successfully predicted the column would buckle about the axis that runs parallel to the \qty{1}{in} edge of the column. The moment of inertia---calculated using Equation \ref{eqn:I}---about this axis is \qty{1.302e-3}{in^4} versus \qty{2.083e-2}{in^4} for the perpendicular axis. Since the moment of inertia about the former axis is lower than the moment of inertia about the latter axis, the resistance to bending is lower about the former axis and will buckle first.
+\begin{align}
+	I&=\frac{1}{12}bh^3\label{eqn:I}
+\end{align}
+The buckling jolt for specimen one was the hardest to see of the five specimens. It was very easy to see the jolt in specimen three. The jolt in specimen four was comparable to specimen three, and still significantly easier to spot than specimen one. We suspect part of the reason specimen one was so difficult to see was due to its low slenderness ratio, $\frac{L}{\rho}$, shown in Table \ref{tbl:prelab}, caused by its thicker diameter.
+
+The buckling jolt for specimen five was more difficult to observe than in specimens two through four, but it was slightly easier than spotting the jolt in specimen one. Specimens one and five had the smallest slenderness ratio and the buckling jolt was very difficult to detect. From this, we observe that columns with low slenderness ratios are less susceptible to buckling than columns with high slenderness ratios.
+
+This is further substantiated by the relative error calculations. The specimens that obviously buckled or jolted (specimens two through four) had less than \qty{15}{\percent} relative error whereas specimens one and five both had very high relative error. It is easier to calculate the critical load on a beam that is highly susceptible to buckling---\eg specimens two through four---whereas detecting exactly when the critical load has been surpassed on beams that are not sensitive to buckling---\eg specimens one and five---is very difficult with the naked eye as it is more of a gradual transition than a jolt.
+
+Additionally, the theoretical critical load may have impacted our ability to observe the buckling jolt. Each tick of the fine position knob increased the compressive force by \qtyrange{5}{10}{lb}. In specimen three, this is approximately a \qty{12}{\percent} increase relative to the theoretical critical load. In specimen five, this is approximately a \qty{5.1}{\percent} increase relative to the theoretical critical load. For specimens with higher critical loads, the relative increase in compression stress for each tick of the fine position knob is lower causing sudden jolts or buckling effects to be less noticeable.
+
+The largest source of error in this experiment comes from the subjective observation of the buckling jolt. This buckling is measured in terms of millimeters and is very difficult to see according to the naked eye. Additionally, what classifies as a jolt is also subjective. To address this subjectivity with a rectangular columns, we suggest placing a displacement needle at the theoretical point of maximum buckling for the given length and end-configuration and recording the displacement and compression force simultaneously. The buckling jolt could easily be identified in post analysis of the data. For cylindrical columns, two displacement needles could be positioned at \ang{90} to recording the displacement in two dimensions. Again, once the magnitude of the displacement surpassed a threshold, \eg \qty{1}{\mm}, the corresponding compressive force would be the critical load.
+
+Besides the subjective measurement of the jolt, the mechanical properties of each material, especially Young's Modulus, $E$, will vary slightly depending on the specimen. Additionally, the fine position needle increased the compressive force by \qtyrange{5}{10}{lb} each tick, which dramatically limits the resolution of $P_\text{cr}$. We could address this error by using the aforementioned displacement needles in combination with an automated Instron test that linearly increased the compressive force per unit time.
+
+% TODO #5
+
+% TODO #6
 
 \section{Conclusion} \label{conclusion}
 In general, the measured critical loads matched the theoretical critical load. For specimen two, we successfully predicted the direction which the column would buckle by calculating the moments of inertia. The highest errors were measured for specimen one and specimen five which we suspect is due to the low slenderness ratio---it was very difficult to see the ``jolt'' in specimen one and specimen five, and specimen five consistently buckled early.
