@@ -297,7 +297,7 @@ Data collected from the experiment is tabulated in Table \ref{tbl:data}.
 \begin{center}
 	\begin{tabular}{|c|c|c|c|c|}
 		\hline
-		Specimen ID&Length [\unit{in}]&$P_\text{cr,avg}$ [\unit{in}]&$P_\text{cr}$ [\unit{in}]&Error\\
+		Specimen ID&Length [\unit{in}]&$P_\text{cr,avg}$ [\unit{in}]&$P_\text{cr}$ [\unit{lb}]&Error\\
 		\hline
 		\num{1}&\num{30}&\num{-133}&\num{-106.5}&\qty{24.9}{\percent}\\
 		\hline
@@ -331,7 +331,50 @@ The largest source of error in this experiment comes from the subjective observa
 
 Besides the subjective measurement of the jolt, the mechanical properties of each material, especially Young's Modulus, $E$, will vary slightly depending on the specimen. Additionally, the fine position needle increased the compressive force by \qtyrange{5}{10}{lb} each tick, which dramatically limits the resolution of $P_\text{cr}$. We could address this error by using the aforementioned displacement needles in combination with an automated Instron test that linearly increased the compressive force per unit time.
 
-% TODO #5
+To maximize the critical load of the steel specimens in a fixed-fixed end-configuration by adjusting the cross-sectional dimensions---but keeping the area constant---we must first recall definitions derived in prelab. The definition of critical load, $P_\text{cr}$ is defined in Equation \ref{eqn:P_cr}.
+\begin{align}
+	P_\text{cr}&=\frac{\pi^2Ebh^3}{12L^2}\label{eqn:P_cr}
+\end{align}
+where $E$ is the Young's Modulus of the specimen in units of pressure, $b$ and $h$ are the cross-sectional dimensions in units of length, and $L$ is the effective length of the column. In theoretical calculations, $b$ and $h$ can be chosen arbitrarily. But in reality, the column will always buckle according to the weakest configuration of $b$ and $h$.
+
+For example, if the cross-sectional dimensions of a column are \qtyproduct{1x2}{in}, the theoretical value of $P_\text{cr}$ may be either of the following:
+\begin{align*}
+	P_\text{cr}&=\frac{2\pi^2E}{3L^2}\\
+	P_\text{cr}&=\frac{\pi^2E}{6L^2}
+\end{align*}
+In reality, however, the column will always buckle based on the value of $P_\text{cr}$ lowest in magnitude, \eg $P_\text{cr}=\frac{\pi^2E}{6L^2}$. Generalizing this statement based on Equation \ref{eqn:P_cr}, we say that in reality, $h$ will always be less than or equal to $b$, \ie $h\le{}b$.
+
+Since we have an additional constraint on the cross-sectional dimensions, we can define a system of equations to determine the cross-sectional dimensions that result in the maximum critical load, $P_\text{cr,max}$. Equation \ref{eqn:area_constraint} is based on the constraint that the area of the column must remain constant.
+\begin{align}
+	b&=\frac{A}{h}\label{eqn:area_constraint}
+\end{align}
+where $A$ is the constant cross sectional area of the column. Substituting Equation \ref{eqn:area_constraint} into Equation \ref{eqn:P_cr}, we find that
+\begin{align}
+	P_\text{cr}&=\frac{\pi^2EAh^2}{12L^2}\label{eqn:subsituted_P_cr}
+\end{align}
+Since $E$, $A$, and $L$ are all constant, $P_\text{cr}$ increases as $h$ increases, and therefore, $P_\text{cr,max}$ occurs when $h$ is at its maximum value. As noted prior, $h$ is bounded above by $b$, and hence, $P_\text{cr,max}$ occurs when $h=b$. Geometrically, if $h=b$, the column is a square.
+
+To maximize $P_\text{cr}$ then, we let $b=h=\sqrt{A}$. The calculations for this configuration, shown below, are based on the material parameters and the area of the steel specimen three.
+\begin{align*}
+	b=h&=\sqrt{A}\\
+	&=\sqrt{\pi(\qty{0.125}{in})^2}\\
+	&=\qty{0.2216}{in}
+\end{align*}
+\begin{align*}
+	P_\text{cr,rect}&=\frac{\pi^2Ebh^3}{12L^2}\\
+	&=\frac{\pi^2(\qty{29000e3}{psi})(\qty{0.2216}{in})(\qty{0.2216}{in})^3}{12(\qty{30}{in})^2}\\
+	&=\qty{63.86}{lb}
+\end{align*}
+\begin{align*}
+	\sigma_\text{cr,rect}&=\frac{P_\text{cr,rect}}{bh}=\frac{\pi^2Eh^2}{12L^2}\\
+	&=\frac{\pi^2(\qty{29000e3}{psi})(\qty{0.2216}{in})^2}{12(\qty{30}{in})^2}\\
+	&=\qty{1.301}{ksi}
+\end{align*}
+\begin{align*}
+	\left(\frac{L}{\rho}\right)_\text{rect}&=\frac{2L}{H}\sqrt{3}\\
+	&=\frac{2(\qty{30}{in})}{(\qty{0.2216}{in})}\sqrt{3}\\
+	&=\num{469.1}
+\end{align*}
 
 When designing a column, there are a number of factors that need to be considered. First and foremost is the column's critical load, $P_\text{cr}$ and its resistance to buckling, \ie the slenderness ratio, $\frac{L}{\rho}$. If these constraints are not satisfied, the column and the structure its supporting may fail. Some structures may handle buckling whereas other structures may be considered unsafe if any buckling has occurred. Additionally, the end-configuration of the column can make a significant difference on the critical load and maximum loads.
 
