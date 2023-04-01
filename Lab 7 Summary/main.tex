@@ -264,6 +264,30 @@ Insert the specimen into the Instron. While the specimen is in the socket, but s
 Visually align the column with a vertical marker behind the column. Increase the compressive force with the fine adjustment knob at a rate of one click per second. Once the specimen ``jolts'' or buckles away from the visual marker, note and record the current force. Unload the specimen. Repeat this whole procedure for all five specimen.
 
 \section{Data} \label{data}
+The critical load and slenderness ratio data from prelab is tabulated in Table \ref{tbl:prelab}
+
+\begin{table}[!htbp]
+\caption{Theoretical critical loads and slenderness ratios.}
+\begin{center}
+	\begin{tabular}{|c|c|c|c|c|}
+		\hline
+		Configuration&$P_{cr}$ [\unit{lb}]&$\frac{L}{\rho}$\\
+		\hline
+		\num{1}&\num{106.5}&\num{320.0}\\
+		\hline
+		\num{2}&\num{142.8}&\num{415.7}\\
+		\hline
+		\num{3}&\num{60.98}&\num{480.0}\\
+		\hline
+		\num{4}&\num{95.28}&\num{384.0}\\
+		\hline
+		\num{5}&\num{124.4}&\num{336.0}\\
+		\hline
+	\end{tabular}
+\end{center}
+\label{tbl:prelab}
+\end{table}
+
 Data collected from the experiment is tabulated in Table \ref{tbl:data}.
 
 \begin{table}[!htbp]
@@ -273,15 +297,15 @@ Data collected from the experiment is tabulated in Table \ref{tbl:data}.
 		\hline
 		Specimen ID&Length [\unit{in}]&$P_\text{cr,avg}$ [\unit{in}]&$P_\text{cr}$ [\unit{in}]&Error\\
 		\hline
-		I&\num{30}&\num{-133}&\num{-106.5}&\qty{24.9}{\percent}\\
+		\num{1}&\num{30}&\num{-133}&\num{-106.5}&\qty{24.9}{\percent}\\
 		\hline
-		II&\num{29.5}&\num{-126}&\num{-147.7}&\qty{14.7}{\percent}\\
+		\num{2}&\num{29.5}&\num{-126}&\num{-147.7}&\qty{14.7}{\percent}\\
 		\hline
-		III&\num{30}&\num{-54.8}&\num{-60.98}&\qty{10.1}{\percent}\\
+		\num{3}&\num{30}&\num{-54.8}&\num{-60.98}&\qty{10.1}{\percent}\\
 		\hline
-		IV&\num{24}&\num{-91.7}&\num{-92.58}&\qty{0.915}{\percent}\\
+		\num{4}&\num{24}&\num{-91.7}&\num{-92.58}&\qty{0.915}{\percent}\\
 		\hline
-		V&\num{27.5}&\num{-102}&\num{-148.1}&\qty{31.4}{\percent}\\
+		\num{5}&\num{27.5}&\num{-102}&\num{-148.1}&\qty{31.4}{\percent}\\
 		\hline
 	\end{tabular}
 \end{center}
@@ -292,6 +316,7 @@ Data collected from the experiment is tabulated in Table \ref{tbl:data}.
 % TODO
 
 \section{Conclusion} \label{conclusion}
-% TODO
+In general, the measured critical loads matched the theoretical critical load. For specimen two, we successfully predicted the direction which the column would buckle by calculating the moments of inertia. The highest errors were measured for specimen one and specimen five which we suspect is due to the low slenderness ratio---it was very difficult to see the ``jolt'' in specimen one and specimen five, and specimen five consistently buckled early.
 
+We learned what material and geometric properties affect the strength and effectiveness of a column and how to calculate the theoretical critical loads and slenderness ratios.
 \end{document}
