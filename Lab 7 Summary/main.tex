@@ -205,16 +205,66 @@ Refer to Table \ref{table:work_assignments} for the distribution of work during 
 \end{table}
 
 \section{Materials} \label{materials}
-% TODO
+\begin{itemize}
+	\item Five metal column specimens with specifications defined in \ref{tbl:column_specs}
+	\item Instron machine (see Figures \ref{fig:instron_1} and \ref{fig:instron_2})
+	\item Socket to fix the ends of the specimens in a pivot configuration (see Figure \ref{fig:socket})
+	\item Ruler to measure the length of the specimen 
+\end{itemize}
+
+\begin{table}[!htbp]
+\caption{The five column buckling test configurations.}
+\begin{center}
+	\begin{tabular}{|c|c|c|c|c|}
+		\hline
+		Specimen ID&Material&Cross-Section [\unit{in.}]&Length [\unit{in.}]&End Condition\\
+		\hline
+		I&aluminum&$\frac{3}{8}$ dia.&\num{30}&both pivot (round)\\
+		\hline
+		II&aluminum&\numproduct{0.25x1}&\num{30}&both pivot (round)\\
+		\hline
+		III&steel&$\frac{1}{4}$ dia.&\num{30}&both pivot (round)\\
+		\hline
+		IV&steel&$\frac{1}{4}$ dia.&\num{24}&both pivot (round)\\
+		\hline
+		V&steel&$\frac{1}{4}$ dia.&\num{27.5} (\num{30} original)&one pivot, one fixed\\
+		\hline
+	\end{tabular}
+\end{center}
+\label{tbl:column_specs}
+\end{table}
 
 \section{Apparatus} \label{apparatus}
-% TODO
+\begin{figure}[htbp]
+    \centering
+    \begin{minipage}{0.45\textwidth}
+        \centering
+		\includegraphics[width=1.0\textwidth]{images/instron_1}
+		\caption{The Instron loaded with a metal column specimen.}
+		\label{fig:instron_1}
+    \end{minipage}\hfill
+    \begin{minipage}{0.45\textwidth}
+        \centering
+		\includegraphics[width=1.0\textwidth]{images/instron_2}
+		\caption{The Instron configured for a column buckling test.}
+		\label{fig:instron_2}
+    \end{minipage}
+\end{figure}
+
+\begin{figure}[htbp]
+	\centering
+	\includegraphics[width=4in]{images/socket}
+	\caption{A close-up of the socket used to hold the specimens in the Instron machine.}
+	\label{fig:socket}
+\end{figure}
 
 \section{Procedures} \label{procedures}
-% TODO
+Insert the specimen into the Instron. While the specimen is in the socket, but still unloaded, zero the Instron to reset all the measurements. Using the fine adjustment knob, decrease the gaps between the specimen ends and the sockets until the specimen is loaded with \qty{5}{lb}. Record the distance between the sockets or between the socket and the grip.
+
+Visually align the column with a vertical marker behind the column. Increase the compressive force with the fine adjustment knob at a rate of one click per second. Once the specimen ``jolts'' or buckles away from the visual marker, note and record the current force. Unload the specimen. Repeat this whole procedure for all five specimen.
 
 \section{Data} \label{data}
-% TODO
+
 
 \section{Analysis} \label{analysis}
 % TODO
